@@ -43,3 +43,52 @@ faqItems.forEach((item) => {
 		}
 	});
 });
+
+// Counter Animation for Stats Section using IntersectionObserver
+const counters = document.querySelectorAll(".stat-number");
+const speed = 200; // The lower the number, the faster the count
+
+// Function to start the counting animation
+const startCounting = (counter) => {
+	const updateCount = () => {
+		const target = +counter.getAttribute("data-target");
+		const count = +counter.innerText.replace(/,/g, ""); // Remove commas for calculation
+
+		// Calculate the increment step
+		const inc = target / speed;
+
+		if (count < target) {
+			// Add increment and format with commas
+			counter.innerText = Math.ceil(count + inc).toLocaleString();
+			setTimeout(updateCount, 15);
+		} else {
+			// Ensure the final number exactly matches the target and is formatted
+			counter.innerText = target.toLocaleString();
+		}
+	};
+	updateCount();
+};
+
+// Intersection Observer to trigger animation when section is in view
+const statsSection = document.querySelector(".stats-section");
+
+if (statsSection) {
+	const observer = new IntersectionObserver(
+		(entries, observer) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					counters.forEach((counter) => {
+						startCounting(counter);
+					});
+					// Stop observing once the animation has triggered
+					observer.unobserve(statsSection);
+				}
+			});
+		},
+		{
+			threshold: 0.5, // Trigger when 50% of the section is visible
+		},
+	);
+
+	observer.observe(statsSection);
+}
