@@ -6,6 +6,10 @@
 	--clr-red: #96001d;
 	--clr-white-20: rgba(255, 255, 255, 0.2);
 	--clr-white-10: rgba(255, 255, 255, 0.1);
+	--clr-bg-light: #f0f4f2;
+	--clr-heading-green: #00543b;
+	--clr-text-dark: #181c1c;
+	--clr-text-gray: #3f4943;
 
 	/* Hero Background Gradient */
 	--gradient-overlay: linear-gradient(
@@ -194,6 +198,97 @@ h1 .highlight-text {
 	border-radius: 3px;
 }
 
+/* =========================================
+   About Section Styles
+   ========================================= */
+.about-section {
+	background-color: var(--clr-bg-light);
+	padding: 60px 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.about-container {
+	max-width: 1280px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 60px;
+}
+
+/* --- Left Column: Image Area --- */
+.about-image-wrapper {
+	flex: 1;
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+/* Creating the soft glow behind the image */
+.glow-effect {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 250px;
+	height: 250px;
+	background: radial-gradient(circle, rgba(177, 240, 209, 0.5) 0%, rgba(177, 240, 209, 0) 70%);
+	z-index: 0;
+	border-radius: 50%;
+}
+
+.about-img {
+	width: 80%;
+	max-width: 400px;
+	border-radius: 24px;
+	position: relative; /* Brings image above the glow effect */
+	z-index: 1;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Dark shadow for the image */
+}
+
+/* --- Right Column: Content Area --- */
+.about-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.about-content h2 {
+	color: var(--clr-heading-green);
+	font-size: clamp(28px, 4vw, 40px); /* Responsive typography */
+	font-weight: 800;
+	letter-spacing: -0.5px;
+}
+
+.about-content p {
+	color: var(--clr-text-gray);
+	font-size: 16px;
+	line-height: 1.7;
+	font-weight: 500;
+}
+
+/* Legacy text section */
+.legacy-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-top: 10px;
+}
+
+.red-line {
+	width: 40px;
+	height: 2px;
+	background-color: var(--clr-red); /* Using existing red variable */
+}
+
+.legacy-text {
+	color: var(--clr-text-dark);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
 /* Responsive Breakpoints */
 /* Tablet and smaller laptops (where hamburger menu starts) */
 @media (max-width: 1024px) {
@@ -258,5 +353,33 @@ h1 .highlight-text {
 	.btn-red,
 	.btn-glass {
 		width: 100%; /* mobile button full width */
+	}
+
+	/* ABOUT */
+	.about-section {
+		padding: 60px 20px;
+	}
+
+	.about-content h2 {
+		font-size: 28px;
+	}
+
+	.about-content p {
+		font-size: 15px;
+	}
+
+	.about-container {
+		flex-direction: column; /* Stack image and text vertically */
+		gap: 40px;
+	}
+
+	.about-image-wrapper {
+		width: 100%;
+	}
+
+	/* Center the glow effect on mobile/tablet */
+	.glow-effect {
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 }
