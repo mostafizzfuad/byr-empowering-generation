@@ -404,6 +404,125 @@ h1 .highlight-text {
 }
 
 /* =========================================
+   Core Values Section Styles
+   ========================================= */
+
+.core-values-section {
+	background-color: var(--clr-white);
+	padding: 100px 40px;
+	display: flex;
+	justify-content: center;
+}
+
+.values-container {
+	max-width: 1280px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 60px;
+}
+
+/* --- Left Column: Headings & Grid --- */
+.values-left {
+	flex: 1.5; /* Takes up slightly more space than the image */
+	display: flex;
+	flex-direction: column;
+}
+
+.values-left h2 {
+	color: var(--clr-heading-green); /* #00543B */
+	font-size: clamp(32px, 4vw, 42px);
+	font-weight: 800;
+	margin-bottom: 40px;
+	letter-spacing: -1px;
+}
+
+/* 3x2 Grid for Desktop */
+.values-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.value-card {
+	background-color: var(--clr-bg-light); /* #F0F4F2 */
+	padding: 24px;
+	border-radius: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.value-icon {
+	color: var(--clr-heading-green);
+	margin-bottom: 8px;
+}
+
+.value-card h3 {
+	color: var(--clr-text-dark); /* #181C1C */
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.value-card p {
+	color: var(--clr-text-gray); /* #3F4943 */
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+/* --- Right Column: Image & Quote --- */
+.values-right {
+	flex: 1; /* Takes up the remaining space */
+	display: flex;
+	justify-content: flex-end; /* Pushes image to the right */
+}
+
+/* Wrapper to hold relative positioning */
+.values-image-wrapper {
+	position: relative;
+	width: 100%;
+	max-width: 450px;
+}
+
+.values-image-wrapper img {
+	width: 100%;
+	height: 500px;
+	object-fit: cover;
+	border-radius: 40px;
+	display: block;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Overlapping Red Quote Box */
+.values-quote-box {
+	position: absolute;
+	bottom: -30px; /* Pulls it down outside the image */
+	right: -30px; /* Pulls it right outside the image */
+	background-color: var(--clr-red); /* #96001D */
+	padding: 30px;
+	border-radius: 20px;
+	max-width: 250px;
+	box-shadow: 0 15px 30px rgba(150, 0, 29, 0.3); /* Red tinted shadow */
+	z-index: 10; /* Keeps it above the image */
+}
+
+.values-quote-box p {
+	color: var(--clr-white);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.5;
+	margin: 0;
+}
+
+/* =========================================
    Gallery Section Styles
    ========================================= */
 .gallery-section {
@@ -1177,6 +1296,26 @@ h1 .highlight-text {
 }
 
 /* Responsive Breakpoints */
+@media (max-width: 1100px) {
+	.values-container {
+		flex-direction: column; /* Stack left and right columns */
+		gap: 80px; /* Extra space for the overlapping box */
+	}
+
+	.values-left,
+	.values-right {
+		width: 100%;
+	}
+
+	.values-image-wrapper {
+		margin: 0 auto; /* Center image on tablet */
+	}
+
+	.values-quote-box {
+		right: -10px; /* Adjust overflow so it doesn't cause horizontal scroll */
+	}
+}
+
 /* Tablet and smaller laptops (where hamburger menu starts) */
 @media (max-width: 1024px) {
 	.navbar {
@@ -1395,6 +1534,14 @@ h1 .highlight-text {
 	.faq-answer p {
 		padding: 0 20px 20px 20px;
 	}
+
+	.values-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.core-values-section {
+		padding: 80px 20px;
+	}
 }
 
 @media (max-width: 600px) {
@@ -1429,20 +1576,31 @@ h1 .highlight-text {
 		grid-template-columns: 1fr; /* Stack first/last name inputs on mobile */
 	}
 
-  /* Gallery */
-  .gallery-section {
-    padding: 60px 20px;
-  }
+	/* Gallery */
+	.gallery-section {
+		padding: 60px 20px;
+	}
 
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 250px; /* Fixed height for all images on mobile */
-    gap: 16px;
-  }
+	.gallery-grid {
+		grid-template-columns: 1fr;
+		grid-auto-rows: 250px; /* Fixed height for all images on mobile */
+		gap: 16px;
+	}
 
-  /* Reset all grid spans to fill the single column naturally */
-  .gallery-item {
-    grid-column: 1 / -1 !important;
-    grid-row: auto !important;
-  }
+	/* Reset all grid spans to fill the single column naturally */
+	.gallery-item {
+		grid-column: 1 / -1 !important;
+		grid-row: auto !important;
+	}
+
+	/* Core Values */
+	.values-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.values-quote-box {
+		bottom: -20px;
+		right: 10px; /* Keep inside bounds on very small screens */
+		width: 90%;
+	}
 }
