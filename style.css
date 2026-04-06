@@ -403,6 +403,90 @@ h1 .highlight-text {
 }
 
 /* =========================================
+   FAQ Section Styles
+   ========================================= */
+.faq-section {
+	background-color: var(--clr-white);
+	padding: 100px 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.faq-container {
+	max-width: 800px; /* Kept narrow for readability */
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.faq-container h2 {
+	color: var(--clr-heading-green);
+	font-size: clamp(28px, 4vw, 40px);
+	font-weight: 800;
+	margin-bottom: 48px;
+	text-align: center;
+}
+
+.faq-list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+/* Individual FAQ Item Box */
+.faq-item {
+	background-color: var(--clr-bg-light);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: background-color 0.3s ease;
+}
+
+/* Question Button */
+.faq-question {
+	width: 100%;
+	background: none;
+	border: none;
+	padding: 24px 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	text-align: left;
+	color: var(--clr-text-dark); /* #181C1C */
+	font-size: 16px;
+	font-weight: 700;
+	font-family: inherit;
+}
+
+/* Arrow Icon Transition */
+.faq-icon {
+	flex-shrink: 0;
+	transition: transform 0.3s ease;
+}
+
+/* Answer Container */
+.faq-answer {
+	max-height: 0; /* Hidden by default */
+	overflow: hidden;
+	transition: max-height 0.4s ease-in-out; /* Smooth slide effect */
+}
+
+.faq-answer p {
+	padding: 0 32px 24px 32px;
+	color: var(--clr-text-gray); /* #3F4943 */
+	font-size: 15px;
+	line-height: 1.6;
+	font-weight: 500;
+}
+
+/* Active State (When FAQ is open) */
+.faq-item.active .faq-icon {
+	transform: rotate(180deg); /* Flips the arrow upwards */
+}
+
+/* =========================================
    Contact Section Styles
    ========================================= */
 .contact-section {
@@ -893,6 +977,19 @@ h1 .highlight-text {
 
 	.legal-links {
 		justify-content: center;
+	}
+
+	/* FAQ */
+	.faq-section {
+		padding: 60px 20px;
+	}
+
+	.faq-question {
+		padding: 20px;
+	}
+
+	.faq-answer p {
+		padding: 0 20px 20px 20px;
 	}
 }
 

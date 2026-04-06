@@ -17,3 +17,29 @@ document.addEventListener("DOMContentLoaded", () => {
 		navLinks.classList.toggle("active");
 	});
 });
+
+// FAQ Accordion functionality
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach((item) => {
+	const questionBtn = item.querySelector(".faq-question");
+	const answerDiv = item.querySelector(".faq-answer");
+
+	questionBtn.addEventListener("click", () => {
+		// Check if the current item is already active
+		const isActive = item.classList.contains("active");
+
+		// First, close all FAQ items
+		faqItems.forEach((otherItem) => {
+			otherItem.classList.remove("active");
+			otherItem.querySelector(".faq-answer").style.maxHeight = null;
+		});
+
+		// If it wasn't active, open it
+		if (!isActive) {
+			item.classList.add("active");
+			// Set max-height to the actual scroll height of the content for smooth animation
+			answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
+		}
+	});
+});
