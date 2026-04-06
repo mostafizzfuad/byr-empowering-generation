@@ -16,6 +16,9 @@
 	--clr-icon-light-green: #b1f0d1; /* For the small icons inside cards */
 	--clr-stat-accent: #9ff4cc;
 
+	--clr-bg-split-left: #e5e9e7;
+	--clr-overlay-green: rgba(11, 110, 79, 0.9); /* #0B6E4F at 90% opacity */
+
 	/* Contact Colors */
 	--clr-contact-bg: #00543b; /* Dark green background */
 	--clr-input-bg: #ebefed; /* Light gray for form inputs */
@@ -581,9 +584,141 @@ h1 .highlight-text {
 }
 
 /* =========================================
+   Objectives & Goals Split Section Styles
+   ========================================= */
+.split-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* Exact 50/50 split */
+	width: 100%;
+}
+
+/* Content Wrappers to mimic standard max-width containers */
+.split-content-wrapper {
+	max-width: 600px;
+	width: 100%;
+	padding: 100px 40px;
+}
+
+/* Align left content to the right edge of its half, and right content to the left edge */
+.right-align-wrapper {
+	margin-left: auto;
+}
+.left-align-wrapper {
+	margin-right: auto;
+}
+
+/* --- Left Side: Objectives --- */
+.split-left {
+	background-color: var(--clr-bg-split-left);
+	display: flex;
+}
+
+.split-left h2 {
+	color: var(--clr-heading-green);
+	font-size: clamp(32px, 4vw, 42px);
+	font-weight: 800;
+	margin-bottom: 40px;
+	letter-spacing: -0.5px;
+}
+
+.objectives-list {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.objective-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.objective-num {
+	width: 40px;
+	height: 40px;
+	background-color: var(--clr-heading-green);
+	color: var(--clr-white);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 800;
+	font-size: 16px;
+	flex-shrink: 0; /* Prevents the circle from squishing */
+}
+
+.objective-text h3 {
+	color: var(--clr-text-dark);
+	font-size: 18px;
+	font-weight: 800;
+	margin-bottom: 6px;
+}
+
+.objective-text p {
+	color: var(--clr-text-gray);
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+/* --- Right Side: Goals --- */
+.split-right {
+	/* Green overlay on top of a background image */
+	background: linear-gradient(var(--clr-overlay-green), var(--clr-overlay-green)), url("./images/goals-bg.jpg");
+	background-position: center;
+	background-size: cover;
+	display: flex;
+}
+
+.split-right h2 {
+	color: var(--clr-white);
+	font-size: clamp(32px, 4vw, 42px);
+	font-weight: 800;
+	margin-bottom: 40px;
+	letter-spacing: -0.5px;
+}
+
+.goals-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.goal-card {
+	background-color: rgba(255, 255, 255, 0.1); /* Glassmorphism background */
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); /* For Safari */
+	padding: 24px 30px;
+	border-radius: 16px;
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease;
+}
+
+.goal-card:hover {
+	transform: translateX(10px); /* Slides right slightly on hover */
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+.goal-card h3 {
+	color: var(--clr-white);
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 12px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.goal-card p {
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+/* =========================================
    Core Values Section Styles
    ========================================= */
-
 .core-values-section {
 	background-color: var(--clr-white);
 	padding: 100px 40px;
@@ -1628,6 +1763,23 @@ h1 .highlight-text {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 60px 40px;
 	}
+
+	/* Split */
+	.split-section {
+		grid-template-columns: 1fr; /* Changes from 50/50 split to stacked */
+	}
+
+	.split-content-wrapper {
+		max-width: 100%; /* Allows content to center naturally */
+		padding: 80px 30px;
+	}
+
+	/* Reset margins since we aren't splitting the screen anymore */
+	.right-align-wrapper,
+	.left-align-wrapper {
+		margin: 0 auto;
+		max-width: 700px;
+	}
 }
 
 /* Moble Screen */
@@ -1824,5 +1976,14 @@ h1 .highlight-text {
 	.stats-container {
 		grid-template-columns: 1fr;
 		gap: 50px;
+	}
+
+  /* Split */
+	.split-content-wrapper {
+		padding: 60px 20px;
+	}
+
+	.goal-card {
+		padding: 20px;
 	}
 }
