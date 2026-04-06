@@ -10,6 +10,7 @@
 	--clr-heading-green: #00543b;
 	--clr-text-dark: #181c1c;
 	--clr-text-gray: #3f4943;
+	--clr-text-light-gray: #f6faf8;
 
 	/* Hero Background Gradient */
 	--gradient-overlay: linear-gradient(
@@ -289,6 +290,104 @@ h1 .highlight-text {
 	letter-spacing: 1px;
 }
 
+/* =========================================
+   Vision & Mission Section Styles
+   ========================================= */
+.vision-mission-section {
+	background-color: var(--clr-text-light-gray);
+	padding: 60px 20px 60px;
+	display: flex;
+	justify-content: center;
+}
+
+.vm-container {
+	max-width: 1100px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+}
+
+/* Base Card Style */
+.vm-card {
+	position: relative;
+	padding: 50px 40px;
+	border-radius: 20px;
+	overflow: hidden; /* Keeps the absolute background icons inside the card boundaries */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	transition: transform 0.3s ease;
+}
+
+.vm-card:hover {
+	transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+/* Specific Card Backgrounds */
+.vision-card {
+	background-color: var(--clr-white);
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.mission-card {
+	background-color: var(--clr-heading-green);
+}
+
+/* Card Content */
+.vm-card .card-content {
+	position: relative;
+	z-index: 2; /* Ensures content is above the background icons */
+}
+
+.vision-card h3 {
+	color: var(--clr-heading-green);
+	font-size: clamp(24px, 3vw, 28px);
+	font-weight: 800;
+	margin-bottom: 20px;
+}
+
+.vision-card p {
+	color: var(--clr-text-gray);
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+.mission-card h3 {
+	color: var(--clr-white);
+	font-size: clamp(24px, 3vw, 28px);
+	font-weight: 800;
+	margin-bottom: 20px;
+}
+
+.mission-card p {
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+/* Background Watermark Icons */
+.card-bg-icon {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 1;
+	width: 120px;
+	opacity: 0.1;
+}
+
+.eye-icon {
+	width: 80px;
+	top: 30px;
+	right: 30px;
+}
+
+.rocket-icon {
+	width: 80px;
+	top: 20px;
+	right: 20px;
+}
+
 /* Responsive Breakpoints */
 /* Tablet and smaller laptops (where hamburger menu starts) */
 @media (max-width: 1024px) {
@@ -381,5 +480,15 @@ h1 .highlight-text {
 	.glow-effect {
 		left: 50%;
 		transform: translate(-50%, -50%);
+	}
+
+  /* Vision & Mission */
+	.vm-container {
+		grid-template-columns: 1fr; /* Stacks the cards vertically on smaller screens */
+		gap: 20px;
+	}
+
+	.vm-card {
+		padding: 40px 24px;
 	}
 }
