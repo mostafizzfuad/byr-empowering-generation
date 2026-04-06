@@ -12,6 +12,13 @@
 	--clr-text-gray: #3f4943;
 	--clr-text-light-gray: #f6faf8;
 
+	/* Footer Colors */
+	--clr-footer-bg: #0b6e4f;
+	--clr-footer-text-70: rgba(226, 232, 240, 0.7); /* E2E8F0 at 70% */
+	--clr-footer-text-50: rgba(226, 232, 240, 0.5); /* E2E8F0 at 50% */
+	--clr-footer-input-bg: rgba(255, 255, 255, 0.1);
+	--clr-footer-border: rgba(255, 255, 255, 0.1);
+
 	/* Hero Background Gradient */
 	--gradient-overlay: linear-gradient(
 		to right,
@@ -388,6 +395,169 @@ h1 .highlight-text {
 	right: 20px;
 }
 
+/* =========================================
+   Footer Section Styles
+   ========================================= */
+
+.footer-section {
+	background-color: var(--clr-footer-bg);
+	padding: 80px 40px 40px;
+	display: flex;
+	justify-content: center;
+}
+
+.footer-container {
+	max-width: 1280px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Top Area Grid */
+.footer-top {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr 1.5fr; /* Custom widths for columns */
+	gap: 40px;
+	margin-bottom: 60px;
+}
+
+/* Footer Headings & Text */
+.footer-col h2 {
+	color: var(--clr-white);
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 16px;
+	line-height: 1.3;
+}
+
+.footer-col h4 {
+	color: var(--clr-white);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	margin-bottom: 24px;
+	text-transform: uppercase;
+}
+
+.footer-col p {
+	color: var(--clr-footer-text-70);
+	font-size: 15px;
+	line-height: 1.6;
+	margin-bottom: 24px;
+}
+
+/* Lists & Links */
+.footer-col ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.footer-col a {
+	text-decoration: none;
+	color: var(--clr-footer-text-70);
+	font-size: 15px;
+	transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+	color: var(--clr-white);
+}
+
+/* Star Icon Wrapper */
+.brand-icon-wrapper {
+	width: 40px;
+	height: 40px;
+	background-color: var(--clr-footer-input-bg);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--clr-white);
+}
+
+/* Newsletter Form */
+.newsletter-form {
+	display: flex;
+	gap: 10px;
+}
+
+.newsletter-form input {
+	flex: 1;
+	background-color: var(--clr-footer-input-bg);
+	border: 1px solid transparent;
+	padding: 12px 16px;
+	border-radius: 8px;
+	color: var(--clr-white);
+	font-size: 14px;
+	outline: none;
+	transition: border 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+	color: var(--clr-footer-text-50);
+}
+
+.newsletter-form input:focus {
+	border-color: var(--clr-white-20);
+}
+
+.newsletter-form button {
+	background-color: var(--clr-white);
+	border: none;
+	width: 46px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: opacity 0.3s ease;
+}
+
+.newsletter-form button:hover {
+	opacity: 0.9;
+}
+
+/* Divider */
+.footer-divider {
+	width: 100%;
+	height: 1px;
+	background-color: var(--clr-footer-border);
+	margin-bottom: 30px;
+}
+
+/* Bottom Area */
+.footer-bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.footer-bottom p {
+	color: var(--clr-footer-text-50);
+	font-size: 13px;
+	margin: 0;
+}
+
+.legal-links {
+	display: flex;
+	gap: 24px;
+}
+
+.legal-links a {
+	color: var(--clr-footer-text-50);
+	font-size: 13px;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+	color: var(--clr-white);
+}
+
 /* Responsive Breakpoints */
 /* Tablet and smaller laptops (where hamburger menu starts) */
 @media (max-width: 1024px) {
@@ -429,6 +599,13 @@ h1 .highlight-text {
 		width: 100%;
 		text-align: center;
 		gap: 15px;
+	}
+
+	/* Footer */
+	.footer-top {
+		/* Transforms to a 2x2 grid */
+		grid-template-columns: repeat(2, 1fr);
+		gap: 50px 30px;
 	}
 }
 
@@ -482,7 +659,7 @@ h1 .highlight-text {
 		transform: translate(-50%, -50%);
 	}
 
-  /* Vision & Mission */
+	/* Vision & Mission */
 	.vm-container {
 		grid-template-columns: 1fr; /* Stacks the cards vertically on smaller screens */
 		gap: 20px;
@@ -490,5 +667,26 @@ h1 .highlight-text {
 
 	.vm-card {
 		padding: 40px 24px;
+	}
+
+	/* Footer */
+	.footer-section {
+		padding: 60px 20px 30px;
+	}
+
+	.footer-top {
+		/* Transforms to a single column */
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.footer-bottom {
+		flex-direction: column;
+		text-align: center;
+		justify-content: center;
+	}
+
+	.legal-links {
+		justify-content: center;
 	}
 }
